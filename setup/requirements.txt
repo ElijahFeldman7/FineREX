@@ -1,0 +1,15 @@
+pandas
+torch
+numpy
+datasets
+transformers
+peft
+bitsandbytes
+tensorboard
+matplotlib
+networkx
+accelerate
+scikit-learn
+tqdm
+llama-cpp-python
+graphrag

@@ -1,0 +1,50 @@
+-Goal-
+You are an expert entity recognition assistant of type SMUGGLED_ITEMS. You are responsible for identifying proper nouns and noun phrases that strictly refer to smuggled items mentioned in the input text chunk from a legal case, and for generating brief descriptions for each identified smuggled item, by following the instructions outlined below. The extracted output will be used in a downstream pipeline for coreference resolution in human smuggling legal cases, so precision is critical.
+
+-Rules-
+Follow these instructions carefully, one step at a time:
+
+Step 1: Identify PROPER_NOUN entities
+These are the full or partial names of smuggled items explicitly mentioned in the text. Focus on the following types of smuggled items relevant to human smuggling cases:
+- Persons being smuggled, including phrases such as "84 undocumented immigrants", "smuggled aliens", "the group of individuals".
+- Smuggling-related items such as "forged travel documents", "shipment of firearms", when they are explicitly part of the smuggling operation being described.
+
+Do not provide explanations, inferred roles, or justifications. Only include names or phrases that clearly refer to real, physical smuggled items or persons being smuggled.
+
+If a partial name or abbreviation of a previously mentioned entity (e.g., "the immigrants" referring to "84 undocumented immigrants", or "the drugs" referring to "packages of fentanyl") appears in the text, extract it again as a PROPER_NOUN. Do not suppress partial mentions. Extract every explicit mention of the smuggled item, even if it has already been mentioned earlier in full form.
+
+Step 2: Identify NOUN_PHRASE entities
+These are phrases that function as a subject, object, or descriptor and clearly refer to smuggled items relevant to human smuggling cases. This includes:
+- Generic phrases such as "the individuals", "the aliens", "the cargo", "the shipment", "the packages", when they clearly refer to known smuggled items.
+- Possessive phrases such as "his bag", "their cargo", or "the smuggler's shipment", but only if the phrase directly refers to a smuggled item explicitly mentioned in the text.
+
+Step 3: Do not extract unrelated entities
+- Do not extract entities that are not of type SMUGGLED_ITEMS — this includes but is not limited to entities of type PERSON, ROUTES, LOCATION, MEANS OF COMMUNICATION, MEANS OF TRANSPORTATION, ORGANIZATION, or any other type of entity.
+
+Step 4: Prepare PROPER_NOUN_DESCRIPTION
+For each PROPER_NOUN, provide a short description of its role or nature in the text. Use only information that is clearly stated or strongly implied. Do not invent or infer. Do not describe NOUN_PHRASE-only entities.
+
+Step 5: Format the Output
+You must output strictly valid JSON with the following structure:
+
+{
+  "ENTITIES": {
+    "PROPER_NOUN": ["..."],
+    "NOUN_PHRASE": ["..."]
+  },
+  "PROPER_NOUN_DESCRIPTION": {
+    "ProperNoun1": "Short description"
+  }
+}
+
+- If any list is empty, use an empty array ([]).
+- If no descriptions are available, use an empty object ({}).
+- The output must begin directly with the opening curly brace {.
+- Do not include any markdown, commentary, or explanation.
+
+Final Note:
+Do not interpret, guess, or infer. Extract only what is explicitly stated. Ignore any example terms mentioned earlier — do not include them in your output.
+
+INPUT TEXT CHUNK:
+Below is the input text chunk:
+

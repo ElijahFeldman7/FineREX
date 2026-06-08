@@ -1,0 +1,24 @@
+Normality p vals 
+Entity f1 p value  0.15839 
+Relationship f1 p value 0.37031 
+MAE p value 0.05267 
+Entity precision p value 0.05073 
+Entity recall p value 0.68703 
+Relationship precision p value 0.21744 
+Relationship recall p value 0.32678 
+Paired t test raw p vals 
+Entity f1 p value  9.60576e-12 
+Relationship f1 p value 4.62215e-13 
+MAE p value 4.31194e-07 
+Entity precision p value 9.63317e-01 
+Entity recall p value 3.32926e-17 
+Relationship precision p value 2.23035e-01 
+Relationship recall p value 1.43218e-16 
+Paired t test corrected p vals 
+Entity f1 p value  4.35861e-11 
+Relationship f1 p value 2.79640e-12 
+MAE p value 1.56523e-06 
+Entity precision p value 1.00000e+00 
+Entity recall p value 6.04260e-16 
+Relationship precision p value 6.74681e-01 
+Relationship recall p value 1.29970e-15 

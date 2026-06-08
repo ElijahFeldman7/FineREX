@@ -1,0 +1,174 @@
+Wilks results (80/10/10 corrected resampled t-test)
+Splits used: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+Total hypotheses: 28
+Harmonic H_m: 3.927171038966
+BY factor (m*H_m): 109.960789091058
+good
+test_entity_precision
+  finetuned mean=0.775981 sd=0.030668
+  baseline mean=0.664018 sd=0.034448
+  shapiro_p=0.404585 transform=logit
+  p_raw=1.583089e-08 p_corrected=2.175972e-07 reject=True
+good
+test_entity_recall
+  finetuned mean=0.766033 sd=0.033767
+  baseline mean=0.551515 sd=0.031883
+  shapiro_p=0.006186 transform=logit
+  p_raw=7.136974e-14 p_corrected=1.961968e-12 reject=True
+good
+test_entity_f1
+  finetuned mean=0.770769 sd=0.029546
+  baseline mean=0.602150 sd=0.028932
+  shapiro_p=0.160704 transform=logit
+  p_raw=1.667606e-12 p_corrected=3.667425e-11 reject=True
+good
+test_relationship_precision
+  finetuned mean=0.534335 sd=0.048170
+  baseline mean=0.433564 sd=0.075759
+  shapiro_p=0.859006 transform=logit
+  p_raw=1.157366e-04 p_corrected=1.060541e-03 reject=True
+good
+test_relationship_recall
+  finetuned mean=0.567371 sd=0.046122
+  baseline mean=0.178020 sd=0.028009
+  shapiro_p=0.379207 transform=logit
+  p_raw=1.576648e-18 p_corrected=1.733694e-16 reject=True
+good
+test_relationship_f1
+  finetuned mean=0.549031 sd=0.038098
+  baseline mean=0.251627 sd=0.038386
+  shapiro_p=0.473926 transform=logit
+  p_raw=3.043966e-16 p_corrected=1.673585e-14 reject=True
+good
+test_relationship_score_mae
+  finetuned mean=0.344979 sd=0.127859
+  baseline mean=1.710233 sd=0.252010
+  shapiro_p=0.744848 transform=none
+  p_raw=2.472040e-14 p_corrected=9.060915e-13 reject=True
+
+test_entity_PERSON_precision
+  finetuned mean=0.772630 sd=0.049157
+  baseline mean=0.664527 sd=0.047720
+  shapiro_p=0.171539 transform=logit
+  p_raw=2.157791e-07 p_corrected=2.372724e-06 reject=True
+
+test_entity_PERSON_recall
+  finetuned mean=0.795272 sd=0.047413
+  baseline mean=0.573078 sd=0.048341
+  shapiro_p=0.192544 transform=logit
+  p_raw=1.969296e-11 p_corrected=3.609090e-10 reject=True
+
+test_entity_PERSON_f1
+  finetuned mean=0.783347 sd=0.044433
+  baseline mean=0.614471 sd=0.041572
+  shapiro_p=0.083661 transform=logit
+  p_raw=2.195672e-10 p_corrected=3.449112e-09 reject=True
+
+test_entity_LOCATION_precision
+  finetuned mean=0.814890 sd=0.047293
+  baseline mean=0.731191 sd=0.081771
+  shapiro_p=0.959553 transform=logit
+  p_raw=1.431004e-02 p_corrected=1.049029e-01 reject=False
+
+test_entity_LOCATION_recall
+  finetuned mean=0.751470 sd=0.066070
+  baseline mean=0.528379 sd=0.070658
+  shapiro_p=0.001810 transform=logit
+  p_raw=9.938420e-08 p_corrected=1.214263e-06 reject=True
+
+test_entity_LOCATION_f1
+  finetuned mean=0.780327 sd=0.047317
+  baseline mean=0.610870 sd=0.065580
+  shapiro_p=0.006040 transform=logit
+  p_raw=4.254513e-07 p_corrected=4.252996e-06 reject=True
+
+test_entity_ORGANIZATION_precision
+  finetuned mean=0.745020 sd=0.119363
+  baseline mean=0.759921 sd=0.232758
+  shapiro_p=0.000086 transform=logit
+  p_raw=4.800486e-01 p_corrected=1.000000e+00 reject=False
+
+test_entity_ORGANIZATION_recall
+  finetuned mean=0.604437 sd=0.174902
+  baseline mean=0.269875 sd=0.141805
+  shapiro_p=0.000000 transform=logit
+  p_raw=2.356566e-01 p_corrected=1.000000e+00 reject=False
+
+test_entity_ORGANIZATION_f1
+  finetuned mean=0.652882 sd=0.123264
+  baseline mean=0.383981 sd=0.171911
+  shapiro_p=0.000000 transform=logit
+  p_raw=1.532069e-01 p_corrected=1.000000e+00 reject=False
+
+test_entity_MEANS_OF_TRANSPORTATION_precision
+  finetuned mean=0.787950 sd=0.079244
+  baseline mean=0.727134 sd=0.104273
+  shapiro_p=0.000000 transform=logit
+  p_raw=9.758596e-01 p_corrected=1.000000e+00 reject=False
+
+test_entity_MEANS_OF_TRANSPORTATION_recall
+  finetuned mean=0.814262 sd=0.087121
+  baseline mean=0.609486 sd=0.101340
+  shapiro_p=0.072677 transform=logit
+  p_raw=3.202751e-04 p_corrected=2.709054e-03 reject=True
+
+test_entity_MEANS_OF_TRANSPORTATION_f1
+  finetuned mean=0.799873 sd=0.078333
+  baseline mean=0.661077 sd=0.097158
+  shapiro_p=0.500817 transform=logit
+  p_raw=1.509590e-03 p_corrected=1.185684e-02 reject=False
+
+test_entity_MEANS_OF_COMMUNICATION_precision
+  finetuned mean=0.291667 sd=0.396796
+  baseline mean=0.441667 sd=0.471988
+  shapiro_p=0.000000 transform=logit
+  p_raw=2.138413e-01 p_corrected=1.000000e+00 reject=False
+
+test_entity_MEANS_OF_COMMUNICATION_recall
+  finetuned mean=0.255556 sd=0.360218
+  baseline mean=0.355556 sd=0.412295
+  shapiro_p=0.000000 transform=logit
+  p_raw=4.168734e-01 p_corrected=1.000000e+00 reject=False
+
+test_entity_MEANS_OF_COMMUNICATION_f1
+  finetuned mean=0.246349 sd=0.318200
+  baseline mean=0.367460 sd=0.395884
+  shapiro_p=0.000000 transform=logit
+  p_raw=3.037499e-01 p_corrected=1.000000e+00 reject=False
+
+test_entity_ROUTES_precision
+  finetuned mean=0.822813 sd=0.138885
+  baseline mean=0.735330 sd=0.197062
+  shapiro_p=0.000215 transform=logit
+  p_raw=6.869544e-01 p_corrected=1.000000e+00 reject=False
+
+test_entity_ROUTES_recall
+  finetuned mean=0.901525 sd=0.123516
+  baseline mean=0.814816 sd=0.158499
+  shapiro_p=0.000283 transform=logit
+  p_raw=3.595089e-01 p_corrected=1.000000e+00 reject=False
+
+test_entity_ROUTES_f1
+  finetuned mean=0.851383 sd=0.106258
+  baseline mean=0.764368 sd=0.163524
+  shapiro_p=0.000000 transform=logit
+  p_raw=4.999532e-01 p_corrected=1.000000e+00 reject=False
+
+test_entity_SMUGGLED_ITEMS_precision
+  finetuned mean=0.278333 sd=0.321489
+  baseline mean=0.092064 sd=0.086500
+  shapiro_p=0.000079 transform=logit
+  p_raw=6.443785e-01 p_corrected=1.000000e+00 reject=False
+
+test_entity_SMUGGLED_ITEMS_recall
+  finetuned mean=0.353889 sd=0.390787
+  baseline mean=0.387222 sd=0.382512
+  shapiro_p=0.000000 transform=logit
+  p_raw=8.324914e-01 p_corrected=1.000000e+00 reject=False
+
+test_entity_SMUGGLED_ITEMS_f1
+  finetuned mean=0.291905 sd=0.318689
+  baseline mean=0.143781 sd=0.132089
+  shapiro_p=0.000015 transform=logit
+  p_raw=8.041263e-01 p_corrected=1.000000e+00 reject=False
+

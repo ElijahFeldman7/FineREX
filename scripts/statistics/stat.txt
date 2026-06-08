@@ -1,0 +1,48 @@
+[Node Duplication] 70B Model vs. Finetuned Full 
+ p: 3.4839e-01 
+d: 0.2607 
+--------------------------------------------------
+[Node Duplication] 70B Model vs. Finetuned Shortcut 
+ p: 1.5906e-01 
+d: 0.2739 
+--------------------------------------------------
+[Noisy Nodes] 70B Model vs. Finetuned Full 
+ p: 4.1809e-03 
+d: 0.7354 
+--------------------------------------------------
+[Noisy Nodes] 70B Model vs. Finetuned Shortcut 
+ p: 1.0986e-02 
+d: 0.6839 
+--------------------------------------------------
+[short - Node Duplication] 70B Model vs. Finetuned Full 
+ p: 7.8125e-02 
+d: -0.8693 
+--------------------------------------------------
+[short - Node Duplication] 70B Model vs. Finetuned Shortcut 
+ p: 5.7812e-01 
+d: -0.3981 
+--------------------------------------------------
+[short - Noisy Nodes] 70B Model vs. Finetuned Full 
+ p: 7.8125e-02 
+d: 0.8803 
+--------------------------------------------------
+[short - Noisy Nodes] 70B Model vs. Finetuned Shortcut 
+ p: 7.8125e-02 
+d: 0.7771 
+--------------------------------------------------
+[long - Node Duplication] 70B Model vs. Finetuned Full 
+ p: 1.1719e-02 
+d: 1.0835 
+--------------------------------------------------
+[long - Node Duplication] 70B Model vs. Finetuned Shortcut 
+ p: 7.8125e-03 
+d: 1.2190 
+--------------------------------------------------
+[long - Noisy Nodes] 70B Model vs. Finetuned Full 
+ p: 3.9062e-02 
+d: 0.7447 
+--------------------------------------------------
+[long - Noisy Nodes] 70B Model vs. Finetuned Shortcut 
+ p: 1.2891e-01 
+d: 0.6090 
+--------------------------------------------------

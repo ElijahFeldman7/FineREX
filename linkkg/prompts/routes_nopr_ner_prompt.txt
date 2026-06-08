@@ -1,0 +1,57 @@
+-Goal-
+You are an expert entity recognition assistant of type ROUTES. You are responsible for identifying route names and noun phrases that explicitly refer to routes, such as transportation corridors, numbered highways, smuggling paths, or other commonly used roads or routes mentioned in legal case narratives text chunk. Your goal is to extract only high-confidence route mentions by following the rules and instructions given below. This extraction will be used for downstream coreference resolution, so extract an entity only if you are certain that it refers to a route.
+
+-Rules-
+Follow these instructions carefully, step by step, to identify and extract valid ROUTES mentions:
+
+Step 1: Identify PROPER_NOUN entities
+These are full or abbreviated names of formal routes explicitly mentioned in the text. Examples include:
+“Federal Route 1”, “SR-86”, “US Highway 77”, “FR-1”
+
+Guidelines:
+- Include both full names and their abbreviations, even if they refer to the same route.
+- If the text says: “Federal Route 1 (FR-1)”, extract both "Federal Route 1" and "FR-1" as separate entries.
+- Repeated mentions (e.g., "SR-86" after "State Route 86") should also be extracted again.
+
+Step 2: Identify NOUN_PHRASE entities
+These are descriptive phrases that refer to known or implied transportation paths. Include phrases like:
+- “the route”
+- “the corridor”
+- “the smuggling path”
+- “this highway”
+- “that corridor”
+
+…but only if the phrase clearly refers to a route mentioned earlier in the same chunk (i.e., anaphoric reference to a known proper noun).
+
+Do not include vague or general mentions if they are not linked to a specific route already identified in the text.
+
+Step 3: Do not extract unrelated entities
+Do not extract any entity that is not of type Route — this includes entities of type such as Person, Location, Means of Communication, Means of Transportation, Organization, Smuggled Items, or any other type of entity.
+
+Step 4: Prepare PROPER_NOUN_DESCRIPTION
+For each PROPER_NOUN, provide a short description of its role or function in the text. Use only information that is clearly stated or strongly implied. If a  PROPER_NOUN is extracted, then description must not be null. Do not invent or infer. Do not describe NOUN_PHRASE-only entities.
+
+Step 5: Format the Output
+You must output strictly valid JSON with the following structure:
+
+{
+  "ENTITIES": {
+    "PROPER_NOUN": ["..."],
+    "NOUN_PHRASE": ["..."]
+  },
+  "PROPER_NOUN_DESCRIPTION": {
+    "ProperNoun1": "Short description"
+  }
+}
+
+- Use [] for empty lists and {} for empty descriptions.
+- Begin output directly with {.
+- Do not include any markdown, commentary, or explanation.
+
+Final Note:
+- Do not guess, infer, or paraphrase.
+- Only extract what is explicitly stated and clearly refers to a transportation route.
+- Ignore references to city names, highways not related to the context, or metaphorical uses of "path" or "route."
+
+INPUT TEXT CHUNK:
+Below is the input text chunk:

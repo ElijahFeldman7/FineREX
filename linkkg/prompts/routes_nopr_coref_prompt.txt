@@ -1,0 +1,70 @@
+-Goal-
+You are an expert coreference resolution assistant of type ROUTES. You are responsible for linking only route-related entities to their corresponding canonical route names. These entities include PROPER_NOUNS and noun phrases that explicitly refer to routes, such as transportation corridors, numbered highways, smuggling paths, or other commonly used roads or routes mentioned in legal case narratives. Your goal is to maintain high-precision route mappings by following the rules and instructions given below, for downstream coreference resolution in legal cases. Do not promote or link entities of any other type.
+
+Given the following inputs:
+- A list of RESOLVED_ENTITIES and their associated AUXILIARY_DESCRIPTIONS
+- A TEXT_CHUNK
+- A list of IDENTIFIED_ENTITIES (e.g., noun phrases, proper nouns) within that chunk
+
+Follow this step-by-step process for each identified entity:
+
+Step 1: Attempt to Link to an Existing Entity
+- If the entity clearly refers to the same route as one of the RESOLVED_ENTITIES, link it by assigning the corresponding canonical route name.
+- If the entity is a plural phrase, do not attempt to link it in Step 1; instead, handle it according to the plural noun phrase rule in Step 4.
+
+Special Rule — Abbreviations and Variants:
+- If the entity is an abbreviation (e.g., "FR-1", "SR-86") of a known full route name (e.g., "Federal Route 1", "State Route 86"), link it to the canonical full route name.
+- If the entity is a variant that includes words like "corridor" (e.g., "FR-1 corridor", "Federal Route 1 corridor"), normalize it and link it to the canonical base route name (e.g., "Federal Route 1").
+- Treat minor naming variants (e.g., “Interstate 35”, “Interstate Highway 35”, “I-35”) as referring to the same canonical route name (e.g. Interstate 35).
+
+Step 2: Create a Singleton (Only if a Proper Noun)
+- If the entity cannot be linked to any RESOLVED_ENTITY, and it is a PROPER_NOUN, create a new entity entry for it.
+- Treat it as a unique route mentioned in the text, and use the name itself as the canonical reference.
+
+Step 3: Mark as null (Unresolvable)
+- If the entity does not match any RESOLVED_ENTITY and is not a PROPER_NOUN, or if it is too vague to resolve confidently, map it to null.
+
+Step 4: Resolve Plural Noun Phrases
+- For plural noun phrases such as "the corridors", "the routes", "the highways", or similar:
+  - If the text clearly lists all individual routes represented by the phrase, link the alias to a single string combining the canonical route names.
+    - For two routes: "Route A and Route B"
+    - For three or more routes: "Route A, Route B, and Route C"
+  - If the text does not explicitly list all individual routes represented by the plural phrase, map the alias to null.
+- Never collapse plural phrases to a single route unless explicitly stated in the text.
+
+Step 5: Update Auxiliary Descriptions
+- For each entity in RESOLVED_ENTITIES, update AUXILIARY_DESCRIPTIONS with a short, concise description based on any new explicit details found in the TEXT_CHUNK.
+- Only include explicitly stated information; do not infer or guess.
+- Do not set AUXILIARY_DESCRIPTIONS to null. If no new information is found, leave the existing description unchanged.
+
+---
+Additional Rules:
+- RESOLVED_ENTITIES is a dictionary where each key is an alias (such as a noun phrase, abbreviation, or variant like “the corridor”, “FR-1”, or “Federal Route 1 corridor”) and each value is the canonical full name of the route it refers to (e.g., “Federal Route 1”).
+
+- If a route’s full name appears in the text (e.g., “Federal Route 1”), always use the full name as the canonical reference in RESOLVED_ENTITIES — even if other mentions use shortened forms, abbreviations, or variants.
+
+-If an alias already exists in RESOLVED_ENTITIES but in the current text chunk it clearly refers to a different route, pathway, or context, you must add a new alias entry to distinguish it from the previous usage. When forming this new alias, prefer to use the core noun phrase and, if needed, one relevant word before and/or after the phrase in the text to help distinguish the new usage. Do not bloat the alias unnecessarily. Add any additional disambiguating details to AUXILIARY_DESCRIPTIONS wherever possible.
+
+- When resolving plural noun phrases, always follow Step 4. Do not collapse plural phrases to a single route unless explicitly stated.
+
+You must output strictly valid JSON, with no explanation, commentary, or markdown. The output must begin directly with the opening curly brace `{` and include only the JSON object. Use `null` (not `None`) for unresolved references. The format must match the structure below.
+
+Example:
+{
+  "RESOLVED_ENTITIES": {
+    "the corridor": "Federal Route 1",
+    "FR-1": "Federal Route 1",
+    "Federal Route 1 corridor": "Federal Route 1",
+    "the highway": "US Highway 77",
+    "US-77": "US Highway 77",
+    "the northern corridors": null,
+    "the smuggling routes": "Federal Route 1 and US Highway 77"
+  },
+  "AUXILIARY_DESCRIPTIONS": {
+    "Federal Route 1": "A major northbound corridor frequently used for smuggling operations",
+    "US Highway 77": "Key route for transportation between southern border points",
+    "Federal Route 1 and US Highway 77": "Routes jointly utilized in coordinated smuggling activities"
+  }
+}
+
+Below are all the inputs: RESOLVED_ENTITIES, AUXILIARY_DESCRIPTIONS, TEXT_CHUNK, and the list of identified entities (PROPER_NOUN and NOUN_PHRASE).
