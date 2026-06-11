@@ -2,7 +2,7 @@
 
 FineREX is a framework for domain-specific knowledge graph construction, specializing in human smuggling. It introduces a fine-tuned approach for Named Entity Recognition and Relationship Extraction (NER-RE) using Llama 3.1 models, outperforming generic baseline pipelines.
 
-Our fine-tuned model may be accessed at [Model]{https://ollama.com/2028efeldman/llama-finetuned}, and run with ollama run 2028efeldman/llama-finetuned.
+Our fine-tuned model may be accessed at [Model](https://ollama.com/2028efeldman/llama-finetuned), and run with ollama run 2028efeldman/llama-finetuned.
 
 ## Project Structure
 
